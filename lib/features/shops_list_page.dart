@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:lunchnearby_app/constants.dart';
 import 'package:lunchnearby_app/repositories/shop_repository.dart';
 
 class ShopsListPage extends HookConsumerWidget {
@@ -12,7 +13,7 @@ class ShopsListPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ランチマップ'),
+        title: const Text('$position周辺のランチマップ'),
       ),
       body: StreamBuilder<dynamic>(
           stream: shopStream,
