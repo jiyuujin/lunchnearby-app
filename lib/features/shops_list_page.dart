@@ -34,9 +34,41 @@ class ShopsListPage extends HookConsumerWidget {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       return ListTile(
-                        title: Text(shops[index]['name']),
-                        trailing: Text(
-                            '徒歩${((shops[index]['dist_meters'] / 1000 / 4 * 60).ceil()).toString()}分'),
+                        title: Text(
+                          shops[index]['name'],
+                          style: const TextStyle(
+                            fontFamily: 'OpenSans',
+                            fontSize: 18,
+                            height: 1.8,
+                            letterSpacing: .3,
+                            color: Color(0xff083e64),
+                          ),
+                        ),
+                        trailing: Column(
+                          children: [
+                            Text(
+                              '徒歩${((shops[index]['dist_meters'] / 1000 / 4 * 60).ceil()).toString()}分',
+                              style: const TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 16,
+                                height: 1.8,
+                                letterSpacing: .2,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff083e64),
+                              ),
+                            ),
+                            Text(
+                              '(${shops[index]['dist_meters'].toString()}m)',
+                              style: const TextStyle(
+                                fontFamily: 'Oswald',
+                                fontSize: 11,
+                                height: 1,
+                                letterSpacing: .1,
+                                color: Color(0xffafafaf),
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     },
                     childCount: shops.length,
