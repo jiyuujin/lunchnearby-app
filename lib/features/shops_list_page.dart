@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lunchnearby_app/constants.dart';
 import 'package:lunchnearby_app/repositories/shop_repository.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ShopsListPage extends HookConsumerWidget {
   ShopsListPage({super.key});
+
+  pointToLatLng(String point) {
+    final regex = RegExp(r'POINT\((.*) (.*)\)');
+    final match = regex.firstMatch(point);
+    if (match == null) {
+      throw Exception('Invalid LatLng string: $point');
+    }
+    return {
+      'latitude': double.parse(match.group(2)!),
+      'longitude': double.parse(match.group(1)!)
+    };
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -69,6 +82,8 @@ class ShopsListPage extends HookConsumerWidget {
                             ),
                           ],
                         ),
+                        onTap: () async => await launchUrl(Uri.parse(
+                            'https://www.google.com/maps/search/${shops[index]['name']}/@${pointToLatLng(shops[index]['location'])['latitude']},${pointToLatLng(shops[index]['location'])['longitude']},16z')),
                       );
                     },
                     childCount: shops.length,
