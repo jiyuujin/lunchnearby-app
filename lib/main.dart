@@ -1,6 +1,9 @@
+import 'package:base_widgets/components/bottom_navigation_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:lunchnearby_app/constants.dart';
+import 'package:lunchnearby_app/features/map_page.dart';
 import 'package:lunchnearby_app/features/shops_list_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -30,7 +33,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ShopsListPage(),
+      home: BottomNavigationTab(
+        title: title,
+        tabItems: tabItems,
+        screens: [
+          ShopsListPage(),
+          MapPage(),
+        ],
+      ),
     );
   }
 }
