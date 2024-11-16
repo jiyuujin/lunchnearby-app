@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lunchnearby_app/constants.dart';
 import 'package:lunchnearby_app/features/map_page.dart';
+import 'package:lunchnearby_app/features/settings_page.dart';
 import 'package:lunchnearby_app/features/shops_list_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         screens: [
           ShopsListPage(),
           MapPage(),
+          SettingsPage(),
         ],
       ),
     );
