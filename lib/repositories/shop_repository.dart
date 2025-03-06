@@ -1,3 +1,4 @@
+import 'package:lunchnearby_app/constants.dart';
 import 'package:lunchnearby_app/models/shop_model.dart';
 import 'package:lunchnearby_app/supabase/supabase_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -17,7 +18,7 @@ class ShopRepository extends _$ShopRepository {
     Shop? condition,
   }) {
     final data = supabaseClient.rpc('nearby_shops',
-        params: {'lat': 35.6321071, 'long': 139.7911525}).asStream();
+        params: {'lat': centerLat, 'long': centerLng}).asStream();
 
     return data;
   }

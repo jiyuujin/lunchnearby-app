@@ -33,7 +33,7 @@ class MapPage extends HookConsumerWidget {
             return Marker(
               markerId: MarkerId(shop['id'].toString()),
               position: LatLng(pointToLatLng(shop['location'])['latitude'],
-                  pointToLatLng(shop['location'])['longitude']),
+                  pointToLatLng(shop['location'])['longitude'] + 0.0026),
               infoWindow: InfoWindow(title: shop['name'].toString()),
             );
           }),
